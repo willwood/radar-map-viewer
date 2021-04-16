@@ -3,7 +3,7 @@ Radar Map Viewer
 
 ## What is it?
 
-A small web application coded in PHP, that you host yourself on a web server. As its name suggests, lets you display an interactive rain radar, inside an iFrame.
+A small web application coded in PHP, that you host yourself on a web server. It lets you display an interactive rain radar, inside an iFrame.
 
 Radar Map Viewer (RMV) is powered using [Leaflet.js](https://leafletjs.com/) mapping, [Mapbox](https://www.mapbox.com/) imagery, [Twitter Bootstrap](https://getbootstrap.com/) 5 + [Font Awesome Icons](https://fontawesome.com/) for the user interface, [leaflet-color-markers](https://github.com/pointhi/leaflet-color-markers) for an optional map pin and the [RainViewer.com API](https://www.rainviewer.com/api.html) for live radar imagery. 
 
