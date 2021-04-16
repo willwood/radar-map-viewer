@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="nofollow">
+  <title>Radar Map Viewer</title>
+  <link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="resources/font-awesome-icons/css/all.css">
+  <style>
+    .card {
+      padding: 1rem;
+    }
+    .columns {
+      display: flex;
+      flex-direction: column;
+    }
+    .column_1 {
+      overflow: auto;
+      max-height: 75vh;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      background: #f7f7f7;
+    }
+    .column_2 {
+      height: 75vh;
+      background-color: #ccc;
+    }
+    @media screen and (min-width: 996px) {
+      .columns {
+        max-height: 50vh;
+        flex-direction: row;
+      }
+      .column_1 {
+        overflow: auto;
+        width: 22rem;
+        max-height: 50vh;
+      }
+      .column_2 {
+        float: right;
+        height: 50vh;
+        flex: 1;
+      }
+    }
+    #iframe_preview {
+      width: 100%;
+      height: 100%;
+    }
+    .radar_embed {
+      padding: 1vw;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 style="text-align: center; margin: 2rem 0;">Radar Map Viewer</h1>
+    <div class="row">
+      <div class="col-lg">
+        <iframe class="radar_embed" loading="lazy" style="border:none; width:100%; height:600px;" src="radar-server.php?speed=1000&mapstyle=dark&zoom=8&startcenter=30.40,-84.26&radarstyle=5&smoothing=1&snow=1&title=Tallahassee,%20FL&static=true&controlbarposition=top&controlscolor=dark&refreshrate=600000&iframeheight=50vh&markerlon=&markerlat=&markerpopup=&fullscreen=true"></iframe>
+      </div>
+      <div class="col-lg">
+        <iframe class="radar_embed" loading="lazy" style="border:none; width:100%; height:600px;" src="radar-server.php?speed=1000&mapstyle=dark&zoom=8&startcenter=27.84,-82.50&radarstyle=5&smoothing=1&snow=1&title=Tampa,%20FL&static=true&controlbarposition=top&controlscolor=dark&refreshrate=600000&iframeheight=40vh&markerlon=&markerlat=&markerpopup=&fullscreen=true"></iframe>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg">
+        <iframe class="radar_embed" loading="lazy" style="border:none; width:100%; height:600px;" src="radar-server.php?speed=1000&mapstyle=dark&zoom=8&startcenter=30.16,-81.60&radarstyle=5&smoothing=1&snow=1&title=Jacksonville,%20FL&static=true&controlbarposition=top&controlscolor=dark&refreshrate=600000&iframeheight=50vh&markerlon=&markerlat=&markerpopup=&fullscreen=true"></iframe>
+      </div>
+      <div class="col-lg">
+        <iframe class="radar_embed" loading="lazy" style="border:none; width:100%; height:600px;" src="radar-server.php?speed=1000&mapstyle=dark&zoom=8&startcenter=24.38,-81.77&radarstyle=5&smoothing=1&snow=1&title=Key%20West,%20FL&static=true&controlbarposition=top&controlscolor=dark&refreshrate=600000&iframeheight=50vh&markerlon=&markerlat=&markerpopup=&fullscreen=true"></iframe>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg">
+        <iframe class="radar_embed" loading="lazy" style="border:none; width:100%; height:600px;" src="radar-server.php?speed=1000&mapstyle=dark&zoom=8&startcenter=30.11,-93.27&radarstyle=5&smoothing=1&snow=1&title=Lake%20Charles,%20LA&static=true&controlbarposition=top&controlscolor=dark&refreshrate=600000&iframeheight=50vh&markerlon=&markerlat=&markerpopup=&fullscreen=true&auth=true"></iframe>
+      </div>
+      <div class="col-lg">
+        <iframe class="radar_embed" loading="lazy" style="border:none; width:100%; height:600px;" src="radar-server.php?speed=1000&mapstyle=dark&zoom=7&startcenter=41.54,-87.49&radarstyle=5&smoothing=1&snow=1&title=Chicago,%20IL&static=true&controlbarposition=top&controlscolor=dark&refreshrate=600000&iframeheight=50vh&markerlon=&markerlat=&markerstyle=blueIcon&markerpopup=&fullscreen=true"></iframe>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg">
+        <iframe class="radar_embed" loading="lazy" style="border:none; width:100%; height:600px;" src="radar-server.php?speed=1000&mapstyle=dark&zoom=7&startcenter=50.36,-4.14&radarstyle=5&smoothing=1&snow=1&title=Plymouth,%20UK&static=true&controlbarposition=top&controlscolor=dark&refreshrate=600000&iframeheight=50vh&markerlon=&markerlat=&markerstyle=blueIcon&markerpopup=&fullscreen=true"></iframe>
+      </div>
+      <div class="col-lg">
+        <iframe class="radar_embed" loading="lazy" style="border:none; width:100%; height:600px;" src="radar-server.php?speed=1000&mapstyle=dark&zoom=8&startcenter=32.33,-64.98&radarstyle=5&smoothing=1&snow=1&title=Bermuda&static=true&controlbarposition=top&controlscolor=dark&refreshrate=600000&iframeheight=40vh&markerlon=&markerlat=&markerpopup=&fullscreen=true&auth=true"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <br>
+    <br>
+    <br>
+    <br>
+
+  <div class="container">
+    <!-- <h2>Real Time Radar Viewer</h2> -->
+    <div class="card">
+    <br>
+    <br>
+    <h3><i class="fas fa-map-marked-alt"></i> Map Maker</h3>
+<p>This tool lets you create your own custom radar maps (like the ones above), to embed within a website or blog as an <a href="https://www.w3schools.com/tags/tag_iframe.asp">HTML iFrame</a>. The radar imagery updates live every 10 minutes from <a href="https://www.rainviewer.com/">RainViewer.com</a>. Alternatively you can take static screenshot images of the map to archive or share on social media.</p> 
+<p>Fill in the form below to customize the starting location, zoom level and style of your map. The settings scroll to reveal more. Informational tooltips explaining each setting are displayed on mouseover. An optional map marker can be added too if required (like for showing a current location or a radar station). As you change the settings, the map permalink and iFrame code will update automatically, ready to copy. A preview of the compiled map is also displayed.</p>
+<br>
+    <br>
+
+    <div class="columns">
+      <div class="column_1">
+    <form>
+      <div class="mb-3" title="Sets the longitude of the map, as it loads. Provide the longitude in decimal format.">
+        <label for="startlongitude" class="form-label">Starting Longitude</label>
+        <input type="number" class="form-control" id="startlongitude" value="34.21" onchange="constructMapRequest()">
+      </div>
+      <div class="mb-3" title="Sets the latitude of the map, as it loads. Provide the latitude in decimal format.">
+        <label for="startlatitude" class="form-label">Starting Latitude</label>
+        <input type="number" class="form-control" id="startlatitude" value="-77.94" onchange="constructMapRequest()">
+      </div>
+      <div class="mb-3" title="Sets the zoom level of the map, as it loads. 10 is closest to ground level and 1 is far away.">
+        <label for="zoom" class="form-label">Starting Zoom Level</label>
+        <select class="form-select" aria-label="Default select example" id="zoom" onchange="constructMapRequest()">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7" selected>7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+      <br>
+      <hr>
+      <br>
+      <div class="mb-3" title="An optional title for the map, displayed within the control bar.">
+        <label for="maptitle" class="form-label">Map Title</label>
+        <input type="text" class="form-control" id="maptitle" onchange="constructMapRequest()">
+      </div>
+      <div class="mb-3" title="How tall to set the iFrame. Height is set in pixels.">
+        <label for="iframeheight" class="form-label">iFrame Height</label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" id="iframeheight" value="600" onchange="constructMapRequest()">
+          <span class="input-group-text">px</span>
+        </div>
+      </div>
+      <div class="mb-3" title="The speed of the radar animation sequence. Speed is specified in milliseconds.">
+        <label for="animationspeed" class="form-label">Animation Speed</label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" id="animationspeed" value="1000" onchange="constructMapRequest()">
+          <span class="input-group-text">ms</span>
+        </div>
+      </div>
+      <div class="mb-3" title="How often the map should reload, to display the latest radar imagery.">
+        <label for="refreshrate" class="form-label">Refresh Rate</label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" id="refreshrate" value="600000" onchange="constructMapRequest()">
+          <span class="input-group-text">ms</span>
+        </div>
+      </div>
+      <div class="mb-3" title="Changes the style of the base map.">
+        <label for="basemapstyle" class="form-label">Base Map Style</label>
+        <select class="form-select" aria-label="Base map style" id="basemapstyle" onchange="constructMapRequest()">
+          <option value="light">Light</option>
+          <option value="dark" selected>Dark</option>
+          <option value="osm">Open Street Map</option>
+        </select>
+      </div>
+      <div class="mb-3" title="Changes the style of the radar imagery.">
+        <label for="radarstyle" class="form-label">Radar Style</label>
+        <select class="form-select" aria-label="Radar Style" id="radarstyle" onchange="constructMapRequest()">
+          <option value="1">Original</option>
+          <option value="2">Universal Blue</option>
+          <option value="3">TITAN</option>
+          <option value="4">The Weather Channel</option>
+          <option value="5" selected>NEXRAD Level-3</option>
+          <option value="6">Rainbow @ SELEX-SI</option>
+          <option value="8">Dark Sky</option>
+        </select>
+      </div>
+      <div class="mb-3" title="Changes the color scheme of the control bar, between light and dark.">
+        <label for="controlbarcolor" class="form-label">Control Bar Color</label>
+        <select class="form-select" aria-label="Control bar color" id="controlbarcolor" onchange="constructMapRequest()">
+          <option value="light">Light</option>
+          <option value="dark" selected>Dark</option>
+        </select>
+      </div>
+      <div class="mb-3" title="Adjusts the positioning of the control bar, between top, bottom and hidden.">
+        <label for="controlbarposition" class="form-label">Control Bar Position</label>
+        <select class="form-select" aria-label="Control bar position" id="controlbarposition" onchange="constructMapRequest()">
+          <option value="top" selected>Top</option>
+          <option value="bottom">Bottom</option>
+          <option value="none">None</option>
+        </select>
+      </div>
+      <div class="form-check" title="Toggles the display of snow, on the radar map.">
+        <input class="form-check-input" type="checkbox" value="" id="snow" checked onchange="constructMapRequest()">
+        <label class="form-check-label" for="snow">
+          Display Snow
+        </label>
+      </div>
+      <div class="form-check" title="If enabled, a full screen button is displayed on the map.">
+        <input class="form-check-input" type="checkbox" value="" id="fullscreen" checked onchange="constructMapRequest()">
+        <label class="form-check-label" for="fullscreen">
+          Full Screen Button
+        </label>
+      </div>
+      <div class="form-check" title="Switches between either a smoothed radar overlay or a pixelated one.">
+        <input class="form-check-input" type="checkbox" value="" id="smooth" checked onchange="constructMapRequest()">
+        <label class="form-check-label" for="smooth">
+          Smooth Radar
+        </label>
+      </div>
+      <div class="form-check" title="If enabled, all zooming and panning controls are disabled. The map will behave like a static JPG or GIF image.">
+        <input class="form-check-input" type="checkbox" value="" id="staticmap" checked onchange="constructMapRequest()">
+        <label class="form-check-label" for="staticmap">
+          Static Map
+        </label>
+      </div>
+      <br>
+      <hr>
+      <br>
+      <div class="mb-3" title="If you want to provide an optional map marker (like to show your current location) enter its longitude here. Provide the longitude in decimal format.">
+        <label for="markerlongitude" class="form-label">Optional Map Marker Longitude</label>
+        <input type="number" class="form-control" id="markerlongitude" onchange="constructMapRequest()">
+      </div>
+      <div class="mb-3" title="If you want to provide an optional map marker (like to show your current location) enter its latitude here. Provide the latitude in decimal format.">
+        <label for="markerlatitude" class="form-label">Optional Map Marker Latitude</label>
+        <input type="number" class="form-control" id="markerlatitude" onchange="constructMapRequest()">
+      </div>
+      <div class="mb-3" title="Adjusts the color of the map marker.">
+        <label for="markerstyle" class="form-label">Map Marker Color</label>
+        <select class="form-select" aria-label="Marker style" id="markerstyle" onchange="constructMapRequest()">
+          <option value="blueIcon" selected>Blue</option>
+          <option value="goldIcon">Gold</option>
+          <option value="redIcon">Red</option>
+          <option value="greenIcon">Green</option>
+          <option value="orangeIcon">Orange</option>
+          <option value="yellowIcon">Yellow</option>
+          <option value="violetIcon">Violet</option>
+          <option value="greyIcon">Grey</option>
+          <option value="blackIcon">Black</option>
+        </select>
+      </div>
+      <div class="mb-3" title="Optional content to display within the map marker popup. If no content is provided, no popup is shown when the map pin is clicked.">
+        <label for="markerpopup" class="form-label">Map Marker Popup Text</label>
+        <textarea id="markerpopup" class="form-control" rows="3" onchange="constructMapRequest()"></textarea>
+        <small id="emailHelp" class="form-text text-muted">Basic HTML tags like <code>&lt;br></code>, <code>&lt;em></code> and <code>&lt;strong></code> are supported within the popup too.</small>
+      </div>
+      <br>
+      <br>
+    </form>
+  </div>
+
+  <div class="column_2">
+    <iframe src="https://example.com/" id="iframe_preview"></iframe>
+  </div>
+
+</div>
+
+<form>
+  <br>
+  <h4><i class="fas fa-link"></i> Permalink</h4>
+  <div class="mb-3" title="This is a link to the generated map. You can either bookmark it or copy and paste it into a web browser address bar.">
+    <textarea id="permalink" class="form-control" rows="3" readonly onclick="select();"></textarea>
+  </div>
+  <br>
+  <h4><i class="fas fa-code"></i> iFrame Embed Code</h4>
+  <div class="mb-3" title="This is the code to embed the generated map as an iFrame, within a website or blog post. This map updates live.">
+    <textarea id="iframe_code" class="form-control" rows="3" readonly onclick="select();"></textarea>
+  </div>
+</form>
+
+<script>
+  function constructMapRequest() {
+    var url = window.location.href;
+    var startlongitude = document.getElementById('startlongitude').value;
+    var startlatitude = document.getElementById('startlatitude').value;
+    var zoom = document.getElementById('zoom').value;
+    var refreshrate = document.getElementById('refreshrate').value;
+    var maptitle = document.getElementById('maptitle').value;
+    var iframeheight = document.getElementById('iframeheight').value;
+    var animationspeed = document.getElementById('animationspeed').value;
+    var basemapstyle = document.getElementById('basemapstyle').value;
+    var radarstyle = document.getElementById('radarstyle').value;
+    var controlbarcolor = document.getElementById('controlbarcolor').value;
+    var controlbarposition = document.getElementById('controlbarposition').value;
+    var fullscreen = document.getElementById('fullscreen');
+    var staticmap = document.getElementById('staticmap');
+    var snow = document.getElementById('snow');
+    var smooth = document.getElementById('smooth');
+    var markerlongitude = document.getElementById('markerlongitude').value;
+    var markerlatitude = document.getElementById('markerlatitude').value;
+    var markerstyle = document.getElementById('markerstyle').value;
+    var markerpopup = document.getElementById('markerpopup').value;
+
+    // Check if checkboxes are checked
+    if (fullscreen.checked) {
+      fullscreen = true;
+    } else {
+      fullscreen = false;
+    }
+    if (staticmap.checked) {
+      staticmap = true;
+    } else {
+      staticmap = false;
+    }
+    if (snow.checked) {
+      snow = 1;
+    } else {
+      snow = 0;
+    }
+    if (smooth.checked) {
+      smooth = 1;
+    } else {
+      smooth = 0;
+    }
+
+    // Replace spaces in titles and popup text with entities
+    maptitle = maptitle.replace(/ /g, '%20');
+    markerpopup = markerpopup.replace(/ /g, '%20');
+
+    var maprequestUrl = url+'radar-server.php?speed='+animationspeed+'&mapstyle='+basemapstyle+'&zoom='+zoom+'&startcenter='+startlongitude+','+startlatitude+'&radarstyle='+radarstyle+'&smoothing='+smooth+'&snow='+snow+'&title='+maptitle+'&static='+staticmap+'&controlbarposition='+controlbarposition+'&controlscolor='+controlbarcolor+'&refreshrate='+refreshrate+'&iframeheight='+iframeheight+'&markerlon='+markerlongitude+'&markerlat='+markerlatitude+'&markerstyle='+markerstyle+'&markerpopup='+markerpopup+'&fullscreen='+fullscreen+'&auth=true';
+
+    document.getElementById('iframe_preview').src = maprequestUrl;
+
+    document.getElementById('permalink').value = maprequestUrl;
+
+    document.getElementById('iframe_code').value = '<iframe class="radar_embed" loading="lazy" style="border:none; width:100%; height:'+iframeheight+'px;" src="'+maprequestUrl+'"></iframe>';
+  }
+  constructMapRequest();
+</script>
+
+</div>
+
+</div>
+
+<br>
+<br>
+
+</body>
+
+</html>
